@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>浅入linux目录 | iceSheep'blogs</title><meta name="author" content="iceSheep"><meta name="copyright" content="iceSheep"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="浅入linux目录linux目录天天用，但是从来没有花时间专门来了解每个目录的用途 这篇文章简要总结了linux的目录相关知识 binbin就是binary的简称，二进制的意思。我们经常使用的命令，均以二进制的形式保存在这个人目录下。在这个目录下，你可以找到所有的命令。为了方便理解记忆，这个目录相当于放满工具的房间。另外，这个目录下的所有文件都不需要任何权限就可以执行，bin目录是系统启动后就直接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅入linux目录">
+<meta property="og:url" content="http://icesheep2003.github.io/2023/03/25/%E6%B5%85%E5%85%A5linux%E7%9B%AE%E5%BD%95/index.html">
+<meta property="og:site_name" content="iceSheep&#39;blogs">
+<meta property="og:description" content="浅入linux目录linux目录天天用，但是从来没有花时间专门来了解每个目录的用途 这篇文章简要总结了linux的目录相关知识 binbin就是binary的简称，二进制的意思。我们经常使用的命令，均以二进制的形式保存在这个人目录下。在这个目录下，你可以找到所有的命令。为了方便理解记忆，这个目录相当于放满工具的房间。另外，这个目录下的所有文件都不需要任何权限就可以执行，bin目录是系统启动后就直接">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://icesheep2003.github.io/img/ice.sheep.jpg">
+<meta property="article:published_time" content="2023-03-25T10:25:27.000Z">
+<meta property="article:modified_time" content="2023-06-25T11:14:40.057Z">
+<meta property="article:author" content="iceSheep">
+<meta property="article:tag" content="随笔">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://icesheep2003.github.io/img/ice.sheep.jpg"><link rel="shortcut icon" href="/img/ice.sheep.jpg"><link rel="canonical" href="http://icesheep2003.github.io/2023/03/25/%E6%B5%85%E5%85%A5linux%E7%9B%AE%E5%BD%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '浅入linux目录',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-25 19:14:40'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ice.sheep.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="iceSheep'blogs"><span class="site-name">iceSheep'blogs</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">浅入linux目录</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-03-25T10:25:27.000Z" title="Created 2023-03-25 18:25:27">2023-03-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-06-25T11:14:40.057Z" title="Updated 2023-06-25 19:14:40">2023-06-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/linux/">linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="浅入linux目录"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="浅入linux目录"><a href="#浅入linux目录" class="headerlink" title="浅入linux目录"></a>浅入linux目录</h1><p>linux目录天天用，但是从来没有花时间专门来了解每个目录的用途</p>
+<p>这篇文章简要总结了linux的目录相关知识</p>
+<h3 id="bin"><a href="#bin" class="headerlink" title="bin"></a><code>bin</code></h3><p>bin就是binary的简称，二进制的意思。我们经常使用的命令，均以二进制的形式保存在这个人目录下。在这个目录下，你可以找到所有的命令。为了方便理解记忆，这个目录相当于放满工具的房间。另外，这个目录下的所有文件都不需要任何权限就可以执行，bin目录是系统启动后就直接使用后的目录，也就是说，除了我们平时使用的命令行，这个目录也包括内核中使用的命令和程序。没有bin目录，系统就可能不能运行。</p>
+<h3 id="boot"><a href="#boot" class="headerlink" title="boot"></a><code>boot</code></h3><p>当我们按下开机键，主板开始通电，计算机自带的BIOS检测到启动盘后，就开始读取这个目录下的内核文件，以及启动管理程序。<br>我们打开boot文件，排在最前面的是内核文件，</p>
+<p><img src="/2023/03/25/%E6%B5%85%E5%85%A5linux%E7%9B%AE%E5%BD%95/boot.png"></p>
+<p>我们打开这个文件所看到的就是各种对内存，进程，驱动，以及库函数等等的详细配置。</p>
+<img src="/2023/03/25/%E6%B5%85%E5%85%A5linux%E7%9B%AE%E5%BD%95/boot2.png" style="zoom: 80%;">
+
+<p>打个比方，内核就像是小区里的物业，物业决定了小区资源的分配和管理，如果没有物业，小区就会失去秩序，操作系统也是这样。其实小到操作系统，大到与之，一个事物的创建就是一个新秩序的创建。内核之所以较内核，就是他创造了一种秩序。操作系统会按照他的秩序来运行，否则就会出现混乱。BIOS访问完内核文件后，将会从EFI中，访问系统分区，然后通过grub引导系统启动。grub定义了启动菜单的选项，超时时间。背景图片的等信息，有的系统还有grub2，他其实u就是grub的升级版。<br>除了内核文件，剩下的就是一些临时的镜像文件和符号表文件。有的镜像文件，就会提供一个基本的环境来处理一些可能出现的问题，比如硬件检测，设备挂载，加密锁等。</p>
+<p>总而言之，boot就像是小区的物业一样，管理起系统的方方面面。</p>
+<h3 id="dev"><a href="#dev" class="headerlink" title="dev"></a><code>dev</code></h3><p>dev其实就是device的缩写，就是设备或者装置。举个例子，当你插入一块硬盘或者多块硬盘的时候，dev目录就会以sd加abcd字母的命格式来记录这些硬盘。比如sda就是接入的第一块硬盘，a为序号，abcd这样以此类推。假如一个硬盘有多个分区的时候则以数字表示，比如sda1就是表示第二个分区。除了硬盘，所有的硬件的参数都会被保存在这个目录下。相比于windows,那么dev目录就相当于设备管理器。他们非常相似，但是对于磁盘管理方面两者有很大的区别，在linux中，没有盘符的概念</p>
+<h3 id="home"><a href="#home" class="headerlink" title="home"></a><code>home</code></h3><p>home目录常被称为家目录。当我们输入账号和密码的时候。按下回车键，进入的就是home目录。简单来说2,这个目录就是用于存放个人文件的目录.当然home亩路下不止存放着一个用户的一个文件<br>当你输入<code>useradd -m -ikun</code>来创建一个新用户，在和home目录下也就可以看到你刚创建的ikun用户。但是每个用户只能访问自己的home目录，root用户却可以访问所有用户的home目录。也就是说，root用户相当于是房东，其他用户相当于是租客。root可以开启和装修任何一个房间。有限的权限范围，可以让每个用户的数据相对独立，从而避免很多误操作和潜在u的风险</p>
+<h3 id="etc"><a href="#etc" class="headerlink" title="etc"></a><code>etc</code></h3><p>etc目录的名字etc来源于etcetera,意思是等等。据说在早期Unix把各种零碎的文件都保存到这目录下因为没有想好一个准确的名字来命名这个目录，所以干脆就叫等等。但从他现在u的用途，不如叫做setting。为什么这么说呢，因为系统所有的设置项，都以文件的形式保存在了这个目录下。如果你刚接触linux，那一定要知道一个思想，linux的一切都是文件。比如当你要设置自己网络时你就需要打开自己的网卡配置。<code>cd /etc/sysconfig/network-scripts/</code>,<code>vi ifcfg-ens33</code>,这就是所有网卡的设置项。他其实就是一个文件。除了网卡设置，。我们还常用passwd文件，用于管理被创建的用户。shadow文件，在这里你可以查看和修改所有的用户密码。根windows一样，linux也有host文件，他也在etc目录下，用于ip映射，本地解析。crontab文件，用于定时计划任务。各个发行版和社区版的linux,etc目录下的文件都超3600多个，甚至更多，感兴趣可以自行了解。</p>
+<h3 id="lib"><a href="#lib" class="headerlink" title="lib"></a><code>lib</code></h3><p>lib的全拼是library,意思是图书馆，但是在计算机世界，我们称之为库或者框架。lib目录i也是一个很底层的目录，他保存着系统，程序，甚至硬件运行所依赖的库文件。比如我们运行ls命令时，系统会调用<code>open(&quot;/etc/ld.so.cache&quot;)</code>,访问etc下的缓存文件，因为这个文件配置了依赖库文件的路径，然后调用<code>open(&quot;/lib64/libselinux.so.1)</code>访问libselinux库文件，这一步是为了检查用户的权限，确认权限后继续访问libcap文件，<code>open(&quot;/lib64/libcap.so.2&quot;)</code>,这个文件主要是定义所有linux系统中软件运行的POSIX标准，之后<code>open(&quot;/lib64/libacl.so.1&quot;)</code>,访问控制列表的相关功能。<br><code>open(&quot;/lib64/libc.so.6&quot;)</code>,访问c的标准库，<code>open(&quot;/lib64/libprce.so.1&quot;)</code>这个文件是为了支持正则表达式的功能等等。lib还有很多的文件，这个例子就是想说明，不管是软件还是硬件的驱动都需要调用这个目录下已经写好的程序。可以说lib目录就是为了防止你重复造轮子，也可以让系统更加精炼简洁。</p>
+<h3 id="usr"><a href="#usr" class="headerlink" title="usr"></a><code>usr</code></h3><p>usr目录很容易让人以为就是user，用户的缩写，但其实他的真身是unix software resource，软件资源目录。打开该目录，看似非常熟悉，但其实需要我们重新认识一下。</p>
+<img src="/2023/03/25/%E6%B5%85%E5%85%A5linux%E7%9B%AE%E5%BD%95/usr.png" style="zoom:80%;">
+
+<p>比如这里的bin目录，他保存的是我们安装软件时产生的命令，比如，zip,vim,wget等。对比根目录下的bin则是确保系统能正常操作的基本命令。那么在usr目录下的etc就是非系统应用的配置和设置。当我们使用<code>apt-get install</code>来安装一个python库的时候，这个python库文件就会被保存到<code>/usr/lib/</code>这个目录下，这个目录下的lib通常叫做非系统库。提一下libexec这个库，这个库里面的文件不是被用户执行的而是被程序调用的。其他的库，include，存放非系统程序的头文件，local，系统建议的软件安装目录，sbin,也是保存shell指令，但是只能被root用户执行，src,存放linux源代码，share,共享目录，存放帮助文档，软件说明等文件，games,游戏，tmp,用户临时缓存目录。</p>
+<h3 id="mnt"><a href="#mnt" class="headerlink" title="mnt"></a><code>mnt</code></h3><p>当我们将u盘插入电脑之后。在电脑里就会显示盘符，这是在windows,换成linux,很多人就会iui蒙圈，找不到u盘去了哪里。在linux中，你需要<code>lsblk-p</code>来查看,图中的sdb就是我们插入的u盘。</p>
+<p><img src="/2023/03/25/%E6%B5%85%E5%85%A5linux%E7%9B%AE%E5%BD%95/mnt.png"></p>
+<p>我们必须把他挂载到一个目录上，通常，我们会把他挂载到mnt目录上，<code>cd /mnt</code>,<code>mkdir usb</code>,<code>mount /dev/sdb1</code>，之后我们就可以正常访问usb。其实mnt目录并不是非常的重要，你可以挂载到其他的目录上，但是mnt是mount挂载的缩写，拥有一个较好的可读性</p>
+<h3 id="var"><a href="#var" class="headerlink" title="var"></a><code>var</code></h3><p>var就是Variable的缩写变量的意思，在linux中他也作为一个变量目录出现。系统和程序在运行的过程中，产生或者需要用到的文件都会被释放到这个目录下。就比如产生的日至文件，就会存放在var&#x2F;log,文件下。还有&#x2F;var&#x2F;cache文件夹。正如其名，就是系统和程序运行产生的缓存就临时存放在这里。&#x2F;var&#x2F;run目录，就类似与pc电脑上的进程管理。保存了程序运行时的状态和进程编号。&#x2F;var&#x2F;lock则是保存记录一些正在使用的文件，将文件上锁，避免被多个程序使用。var目录是不断变化的，暂且介绍这么多。</p>
+<h3 id="proc"><a href="#proc" class="headerlink" title="proc"></a><code>proc</code></h3><p>通过ps来查看系统进程，是非常常用的指令，其实这些进程信息就保存在proc,这个目录下。他的全拼是，process directory 为了内核对进程管理的访问速度和实时性，这个目录会被保存到内存中，而不是硬盘里。像proc,sys,dev,run,这样的目录，为了速度和实时性，都会被放到内存里。简单来说，proc是一个伪目录，内核为我们定义了一个管理进程的虚拟文件系统，2我们在该文件下看到的数字，其实就是以每一个进程的pid命名的目录，在这个目录里面。可以看到进程的状态进程所处在的环境变量，通过这个文件，我们可以定义这个进程使用的内存的大小，甚至可以定义你使用什么命令行来启动这个进程都可以由一个文件来定义。而所有的这些文件，在进程没有被启动的时候，都是不存在的，只有进程被启动后，彩绘被内核动态生成，并非配到内存中，关机或重启都会被清除。</p>
+<h3 id="sbin"><a href="#sbin" class="headerlink" title="sbin"></a><code>sbin</code></h3><p>注意与usr目录下的两个目录bin sbin，相区别，根目录下的bin 和 sbin,是系统启动时使用的，usr目录下的bin和sbin是运行某个程序才启动的，系统级和应用级的区别。</p>
+<p>常用的目录暂时总结这些，常常实践才能对这些目录有更深刻的印象。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://icesheep2003.github.io">iceSheep</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://icesheep2003.github.io/2023/03/25/%E6%B5%85%E5%85%A5linux%E7%9B%AE%E5%BD%95/">http://icesheep2003.github.io/2023/03/25/%E6%B5%85%E5%85%A5linux%E7%9B%AE%E5%BD%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a><a class="post-meta__tags" href="/tags/linux/">linux</a></div><div class="post_share"><div class="social-share" data-image="/img/ice.sheep.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/05/10/hello-world/" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Hello World</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/05/10/hello-world/" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-10</div><div class="title">Hello World</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ice.sheep.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">iceSheep</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%85%E5%85%A5linux%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">浅入linux目录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#bin"><span class="toc-number">1.0.1.</span> <span class="toc-text">bin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#boot"><span class="toc-number">1.0.2.</span> <span class="toc-text">boot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dev"><span class="toc-number">1.0.3.</span> <span class="toc-text">dev</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#home"><span class="toc-number">1.0.4.</span> <span class="toc-text">home</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#etc"><span class="toc-number">1.0.5.</span> <span class="toc-text">etc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lib"><span class="toc-number">1.0.6.</span> <span class="toc-text">lib</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#usr"><span class="toc-number">1.0.7.</span> <span class="toc-text">usr</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mnt"><span class="toc-number">1.0.8.</span> <span class="toc-text">mnt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#var"><span class="toc-number">1.0.9.</span> <span class="toc-text">var</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proc"><span class="toc-number">1.0.10.</span> <span class="toc-text">proc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sbin"><span class="toc-number">1.0.11.</span> <span class="toc-text">sbin</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/06/25/%E4%BD%BF%E7%94%A8hexo%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="使用hexo遇到的问题">使用hexo遇到的问题</a><time datetime="2023-06-25T10:58:20.000Z" title="Created 2023-06-25 18:58:20">2023-06-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/06/25/%E6%97%A0%E8%81%8A%E7%9A%84%E4%B8%80%E4%B8%A4%E5%8F%A5%E8%AF%9D/" title="非常无聊的一次消遣">非常无聊的一次消遣</a><time datetime="2023-06-25T04:49:16.000Z" title="Created 2023-06-25 12:49:16">2023-06-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/06/17/pytorch%E5%85%A5%E9%97%A8/" title="pytorch入门">pytorch入门</a><time datetime="2023-06-17T03:47:38.000Z" title="Created 2023-06-17 11:47:38">2023-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/16/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E6%A8%A1%E6%9D%BF%E6%80%BB%E7%BB%93/" title="算法基础模板总结">算法基础模板总结</a><time datetime="2023-05-16T11:44:52.000Z" title="Created 2023-05-16 19:44:52">2023-05-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/10/hello-world/" title="Hello World">Hello World</a><time datetime="2023-05-10T12:11:36.513Z" title="Created 2023-05-10 20:11:36">2023-05-10</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By iceSheep</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
