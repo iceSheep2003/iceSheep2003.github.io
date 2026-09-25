@@ -45,7 +45,12 @@ const YukinaConfig: Configuration = {
   maxFooterCategoryChip: 6,
   maxFooterTagChip: 24,
 
-  banners: [],
+  banners: [
+    "https://s2.loli.net/2025/01/25/PBvHFjr5yDu6t4a.webp",
+    "https://s2.loli.net/2025/01/25/6bKcwHZigzlM4mJ.webp",
+    "https://s2.loli.net/2025/01/25/H9WgEK6qNTcpFiS.webp",
+    "https://s2.loli.net/2025/01/25/njNVtuUMzxs81RI.webp",
+  ],
 
   slugMode: "RAW", // 'RAW' | 'HASH'
 
@@ -55,7 +60,7 @@ const YukinaConfig: Configuration = {
   },
 
   // WIP functions
-  bannerStyle: "HIDDEN",
+  bannerStyle: "LOOP",
 };
 
 export default YukinaConfig;
