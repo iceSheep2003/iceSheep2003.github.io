@@ -1,63 +1,214 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import { Icon } from "astro-icon/components";
+import ContributionGraph from "../components/ContributionGraph.astro";
+import { profile } from "../data/profile";
+import Main from "../layouts/MainLayout.astro";
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<Main hideSidebar={true}>
+  <div class="profile-page">
+    <section class="hero-card">
+      <img src="/avatar.jpg" alt="ice.Sheep 的头像" class="avatar" />
+      <div class="hero-copy">
+        <p class="eyebrow">个人档案</p>
+        <h1>{profile.name}</h1>
+        <p class="role">{profile.role} · 软件工程</p>
+        <p class="intro">{profile.intro}</p>
+        <div class="actions resume-actions">
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noreferrer"
+            class="primary-action"
+          >
+            <Icon name="line-md:github-loop" size={20} />
+            GitHub
+          </a>
+          <button
+            type="button"
+            onclick="window.print()"
+            class="secondary-action"
+          >
+            <Icon name="mingcute:print-line" size={20} />
+            打印 / 保存为 PDF
+          </button>
+        </div>
+      </div>
+    </section>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+    <div class="resume-grid">
+      <section class="card education-card">
+        <p class="eyebrow">教育经历</p>
+        <h2>软件工程</h2>
+        <div class="timeline">
+          {
+            profile.education.map((item) => (
+              <article class="timeline-item">
+                <h3>{item.school}</h3>
+                <p>{item.major}</p>
+              </article>
+            ))
+          }
+        </div>
+      </section>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+      <section class="card skills-card">
+        <p class="eyebrow">能力</p>
+        <h2>常用技术</h2>
+        <div class="skill-list">
+          {profile.skills.map((skill) => <span>{skill}</span>)}
+        </div>
+        <p class="skills-note">
+          更关注如何把技术用于真实项目，而不是用百分比描述熟练程度。
+        </p>
+      </section>
+    </div>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+    <section class="projects-section card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">作品</p>
+          <h2>代表项目</h2>
+        </div>
+        <a href={profile.github} target="_blank" rel="noreferrer"
+          >查看全部仓库</a
+        >
+      </div>
+      <div class="project-grid">
+        {
+          profile.projects.map((project) => (
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              class="project-card"
+            >
+              <div class="project-title">
+                <h3>{project.name}</h3>
+                <Icon name="mingcute:arrow-right-up-line" size={20} />
+              </div>
+              <p>{project.description}</p>
+              <span>{project.language}</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+    <ContributionGraph />
+  </div>
+</Main>
+
+<style>
+  .profile-page {
+    @apply space-y-5;
+  }
+  .hero-card,
+  .card {
+    @apply rounded-3xl bg-[var(--card-color)];
+  }
+  .hero-card {
+    @apply grid gap-7 p-6 sm:grid-cols-[160px_1fr] sm:items-center md:p-10;
+  }
+  .avatar {
+    @apply aspect-square w-32 rounded-3xl object-cover shadow-sm sm:w-40;
+  }
+  .eyebrow {
+    @apply mb-2 text-sm font-medium uppercase tracking-[0.18em] text-[var(--primary-color)];
+  }
+  h1 {
+    @apply text-4xl font-semibold tracking-tight text-[var(--text-color)] md:text-5xl;
+  }
+  h2 {
+    @apply text-2xl font-semibold text-[var(--text-color)] md:text-3xl;
+  }
+  h3 {
+    @apply text-lg font-semibold text-[var(--text-color)];
+  }
+  .role {
+    @apply mt-2 text-lg text-[var(--text-color-lighten)];
+  }
+  .intro {
+    @apply mt-4 max-w-2xl text-base leading-8 text-[var(--text-color)];
+  }
+  .actions {
+    @apply mt-6 flex flex-wrap gap-3;
+  }
+  .actions a,
+  .actions button {
+    @apply inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all active:scale-95;
+  }
+  .primary-action {
+    @apply bg-[var(--primary-color)] text-white hover:brightness-95;
+  }
+  .secondary-action {
+    @apply bg-[var(--primary-color-lighten)] text-[var(--primary-color)] hover:brightness-95;
+  }
+  .resume-grid {
+    @apply grid gap-5 lg:grid-cols-[1.25fr_0.75fr];
+  }
+  .card {
+    @apply p-6 md:p-8;
+  }
+  .timeline {
+    @apply mt-6 space-y-6 border-l-2 border-[var(--primary-color-lighten)] pl-6;
+  }
+  .timeline-item {
+    @apply relative;
+  }
+  .timeline-item::before {
+    content: "";
+    @apply absolute -left-[31px] top-1.5 h-3 w-3 rounded-full bg-[var(--primary-color)];
+  }
+  .timeline-item > p {
+    @apply mt-1 text-[var(--text-color-lighten)];
+  }
+  .skill-list {
+    @apply mt-6 flex flex-wrap gap-2;
+  }
+  .skill-list span {
+    @apply rounded-xl bg-[var(--primary-color-lighten)] px-3 py-2 text-sm font-medium text-[var(--primary-color)];
+  }
+  .skills-note {
+    @apply mt-6 text-sm leading-6 text-[var(--text-color-lighten)];
+  }
+  .section-heading {
+    @apply mb-6 flex items-end justify-between gap-4;
+  }
+  .section-heading > a {
+    @apply text-sm font-medium text-[var(--text-color-lighten)] transition-colors hover:text-[var(--primary-color)];
+  }
+  .project-grid {
+    @apply grid gap-4 md:grid-cols-2;
+  }
+  .project-card {
+    @apply rounded-2xl border border-[var(--primary-color-transparent)] bg-[var(--background-color)] p-5 transition-all hover:-translate-y-1 hover:border-[var(--primary-color)];
+  }
+  .project-title {
+    @apply flex items-center justify-between gap-3 text-[var(--primary-color)];
+  }
+  .project-card > p {
+    @apply my-3 leading-7 text-[var(--text-color-lighten)];
+  }
+  .project-card > span {
+    @apply text-sm font-medium text-[var(--primary-color)];
+  }
+
+  @media print {
+    :global(nav),
+    :global(footer),
+    .resume-actions,
+    :global(.contribution-card) {
+      display: none !important;
+    }
+    :global(body) {
+      background: white !important;
+    }
+    .hero-card,
+    .card {
+      break-inside: avoid;
+      box-shadow: none;
+      border: 1px solid #ddd;
+    }
+  }
+</style>
