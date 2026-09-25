@@ -7,12 +7,16 @@ export const profile = {
   skills: ["TypeScript", "Astro", "Git", "GitHub Actions", "Node.js"],
   education: [
     {
-      school: "大连理工大学",
-      major: "软件工程",
-    },
-    {
       school: "北京大学",
       major: "软件工程",
+      degree: "硕士",
+      period: "2025.09 — 至今",
+    },
+    {
+      school: "大连理工大学",
+      major: "软件工程",
+      degree: "本科",
+      period: "2021.09 — 2025.06",
     },
   ],
   projects: [

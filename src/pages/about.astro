@@ -8,7 +8,10 @@ import Main from "../layouts/MainLayout.astro";
 <Main hideSidebar={true}>
   <div class="profile-page">
     <section class="hero-card">
-      <img src="/avatar.jpg" alt="ice.Sheep 的头像" class="avatar" />
+      <div class="avatar-stage">
+        <span class="avatar-orbit" aria-hidden="true"></span>
+        <img src="/avatar.jpg" alt="ice.Sheep 的头像" class="avatar" />
+      </div>
       <div class="hero-copy">
         <p class="eyebrow">个人档案</p>
         <h1>{profile.name}</h1>
@@ -44,8 +47,13 @@ import Main from "../layouts/MainLayout.astro";
           {
             profile.education.map((item) => (
               <article class="timeline-item">
-                <h3>{item.school}</h3>
-                <p>{item.major}</p>
+                <div class="education-heading">
+                  <h3>{item.school}</h3>
+                  <time>{item.period}</time>
+                </div>
+                <p>
+                  {item.degree} · {item.major}
+                </p>
               </article>
             ))
           }
@@ -103,15 +111,71 @@ import Main from "../layouts/MainLayout.astro";
   .profile-page {
     @apply space-y-5;
   }
+  .profile-page > * {
+    opacity: 0;
+    animation: profile-reveal 520ms ease-out forwards;
+  }
+  .profile-page > :nth-child(2) {
+    animation-delay: 90ms;
+  }
+  .profile-page > :nth-child(3) {
+    animation-delay: 180ms;
+  }
+  .profile-page > :nth-child(4) {
+    animation-delay: 270ms;
+  }
   .hero-card,
   .card {
     @apply rounded-3xl bg-[var(--card-color)];
   }
   .hero-card {
+    position: relative;
+    overflow: hidden;
     @apply grid gap-7 p-6 sm:grid-cols-[160px_1fr] sm:items-center md:p-10;
+  }
+  .hero-card::after {
+    content: "";
+    position: absolute;
+    width: 18rem;
+    height: 18rem;
+    right: -7rem;
+    top: -9rem;
+    border-radius: 999px;
+    background: var(--primary-color);
+    filter: blur(70px);
+    opacity: 0.12;
+    animation: ambient-drift 9s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  .hero-copy {
+    position: relative;
+    z-index: 1;
+  }
+  .avatar-stage {
+    position: relative;
+    width: fit-content;
+    isolation: isolate;
+  }
+  .avatar-orbit {
+    position: absolute;
+    inset: -8px;
+    z-index: -1;
+    border-radius: 1.9rem;
+    border: 2px dashed
+      color-mix(in oklch, var(--primary-color) 45%, transparent);
+    animation: orbit-turn 18s linear infinite;
   }
   .avatar {
     @apply aspect-square w-32 rounded-3xl object-cover shadow-sm sm:w-40;
+    transition:
+      transform 350ms ease,
+      box-shadow 350ms ease;
+    animation: avatar-breathe 5s ease-in-out infinite;
+  }
+  .avatar-stage:hover .avatar {
+    transform: translateY(-4px) rotate(-1deg);
+    box-shadow: 0 18px 40px
+      color-mix(in oklch, var(--primary-color) 18%, transparent);
   }
   .eyebrow {
     @apply mb-2 text-sm font-medium uppercase tracking-[0.18em] text-[var(--primary-color)];
@@ -163,6 +227,12 @@ import Main from "../layouts/MainLayout.astro";
   .timeline-item > p {
     @apply mt-1 text-[var(--text-color-lighten)];
   }
+  .education-heading {
+    @apply flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between;
+  }
+  .education-heading time {
+    @apply text-sm font-medium tabular-nums text-[var(--primary-color)];
+  }
   .skill-list {
     @apply mt-6 flex flex-wrap gap-2;
   }
@@ -183,6 +253,7 @@ import Main from "../layouts/MainLayout.astro";
   }
   .project-card {
     @apply rounded-2xl border border-[var(--primary-color-transparent)] bg-[var(--background-color)] p-5 transition-all hover:-translate-y-1 hover:border-[var(--primary-color)];
+    transition-duration: 280ms;
   }
   .project-title {
     @apply flex items-center justify-between gap-3 text-[var(--primary-color)];
@@ -192,6 +263,49 @@ import Main from "../layouts/MainLayout.astro";
   }
   .project-card > span {
     @apply text-sm font-medium text-[var(--primary-color)];
+  }
+
+  @keyframes orbit-turn {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes avatar-breathe {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+  @keyframes ambient-drift {
+    from {
+      transform: translate3d(0, 0, 0) scale(0.9);
+    }
+    to {
+      transform: translate3d(-3rem, 2rem, 0) scale(1.12);
+    }
+  }
+  @keyframes profile-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-card::after,
+    .avatar-orbit,
+    .avatar,
+    .profile-page > * {
+      animation: none;
+      opacity: 1;
+    }
   }
 
   @media print {
@@ -209,6 +323,10 @@ import Main from "../layouts/MainLayout.astro";
       break-inside: avoid;
       box-shadow: none;
       border: 1px solid #ddd;
+    }
+    .profile-page > * {
+      opacity: 1;
+      animation: none;
     }
   }
 </style>
